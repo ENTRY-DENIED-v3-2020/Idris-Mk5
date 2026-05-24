@@ -83,7 +83,6 @@ async def voice_handler(update, context):
 
     lower_word = []
     for i in words:
-        i.strip(".,!?")
         lower_word.append(i.lower().strip(".,!?"))
         
     
