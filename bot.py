@@ -83,7 +83,12 @@ async def voice_handler(update, context):
 
     lower_word = []
     for i in words:
-        lower_word.append(i.lower())
+        i.strip(".,!?")
+        lower_word.append(i.lower().strip(".,!?"))
+        
+    
+    
+    
 
 
     print(f"Transcribed: {text}")
