@@ -61,7 +61,7 @@ async def process_song(update ,song_name):
         await asyncio.to_thread(download_audio,f'https://www.youtube.com/watch?v={match.group(1)}')  # This says "run download_audio in a separate thread, so the event loop stays free." Does that make sense?
         await update.message.reply_text("📡 downloading to local core...")                           # Wrong: you cook the food yourself, then hand the plate to the chef,  Right: you hand the recipe to the chef, let them cook it, to_thread is the chef. It needs the recipe (function), not the cooked food (result).
         await asyncio.sleep(2)
-        await update.message.reply_audio(open('audio.mp3', 'rb'), read_timeout=60, write_timeout=60)
+        await update.message.reply_audio(open('audio.mp3', 'rb'), read_timeout=120, write_timeout=120)
         await update.message.reply_text("🎵 enjoy boss.")
 
 async def voice_handler(update, context):
