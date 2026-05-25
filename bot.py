@@ -65,6 +65,7 @@ async def process_song(update ,song_name):
         await update.message.reply_text("🎵 enjoy boss.")
 
 async def voice_handler(update, context):
+    print("voice message received!")
     global is_playing
     file_id = update.message.voice.file_id  # this is the voice tag or the coat check ticket
     file = await context.bot.get_file(file_id) #this gets the audio files id like a coat check counter giving a token to collect the coat later
