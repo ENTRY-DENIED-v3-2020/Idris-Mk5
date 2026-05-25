@@ -106,6 +106,7 @@ async def voice_handler(update, context):
                     await process_song(update, song_name)
 
             finally:
+                print("resetting is_playing to False")
                 is_playing = False
     else:
         await update.message.reply_text(f'did you say "{text}" boss?')
