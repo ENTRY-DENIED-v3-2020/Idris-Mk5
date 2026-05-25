@@ -85,10 +85,6 @@ async def voice_handler(update, context):
     for i in words:
         lower_word.append(i.lower().strip(".,!?"))
         
-    
-    
-    
-
 
     print(f"Transcribed: {text}")
     print(f"Words: {words}")
@@ -100,15 +96,16 @@ async def voice_handler(update, context):
             queue.append(song_name)
             await update.message.reply_text("🎵 added to queue!")
 
-            
         else:
-            is_playing = True
-            await process_song(update, song_name)             #   ---b.)            |
-            while queue != []: # check if queue has song in it, if it has move down v
-                song_name = queue.pop(0)
-                await process_song(update, song_name) # --- a.)
-            is_playing = False  # if is_playing is inside while loop once song starts playing from (a) it sets is_playing to false and next song will start playing from (b) same time song is playing from (a)
-            
+            try:
+                is_playing = True
+                await process_song(update, song_name)             #   ---b.)            |
+                while queue != []: # check if queue has song in it, if it has move down v
+                    song_name = queue.pop(0)
+                    await process_song(update, song_name)
+
+            finally:
+                is_playing = False
     else:
         await update.message.reply_text(f'did you say "{text}" boss?')
 
@@ -160,3 +157,8 @@ app.run_polling()
 
 # .venv\Scripts\activate
 #  python bot.py
+
+
+
+
+    
